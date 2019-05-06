@@ -7,6 +7,7 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 0,15,30,45 * * * * cd /home/narate/crontab && ./ddns_update.sh
 
 # daily stock update
-STOCK_WD=/home/narate/projects/stocks/scripts
-STOCK_DB=/home/narate/projects/stocks/wiki.db
-0 2 * * 2,3,4,5,6 test -d $STOCK_WD && test -f $STOCK_DB && cd $STOCK_WD && ./update-WIKI.py --db $STOCK_DB
+#STOCK_WD=/home/narate/projects/stocks/scripts
+#STOCK_DB=/home/narate/projects/stocks/wiki.db
+#0 2 * * 2,3,4,5,6 test -d $STOCK_WD && test -f $STOCK_DB && cd $STOCK_WD && ./update-WIKI.py --db $STOCK_DB
+# Seems like the data is not free any more

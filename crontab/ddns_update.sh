@@ -32,7 +32,7 @@ expect DDNS_HOSTNAME
 expect DDNS_FROM
 expect DDNS_TO
 
-DIG=$(dig -4 +short narate.taerat.net)
+DIG=$(dig -4 +short narate.taerat.net @8.8.8.8)
 MY_ADDR=$(wget -4 -q -O - https://domains.google.com/checkip)
 
 if test "$DIG" = "$MY_ADDR"; then
