@@ -58,7 +58,7 @@ set t_Co=16
 " Line wrap settings
 set textwidth=80
 set colorcolumn=+1
-highlight ColorColumn ctermbg=7
+highlight ColorColumn ctermbg=0
 " highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 " match OverLength /\%81v.\+/
 
@@ -71,6 +71,9 @@ function Ntt()
 	execute "NERDTreeTabsToggle"
 endfunction
 command NTT :call Ntt()
+let g:NERDTreeDirArrows = 1
+let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowCollapsible = '▾'
 
 set nocompatible
 set completeopt=longest,menu,preview,menuone
@@ -102,14 +105,14 @@ set comments+=fb:\[\ \]
 set comments+=fb:\[*\]
 
 " Airline options
-let g:airline#extensions#tabline#enabled = 0
-let g:airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_buffers = 1
 let g:airline_powerline_fonts = 1
 let g:airline_theme="wombat"
-let g:airline#extensions#tabline#left_sep = ''
-let g:airline#extensions#tabline#left_alt_sep = ''
-let g:airline#extensions#tabline#right_sep = ''
-let g:airline#extensions#tabline#right_alt_sep = ''
+"let g:airline#extensions#tabline#left_sep = ''
+"let g:airline#extensions#tabline#left_alt_sep = ''
+"let g:airline#extensions#tabline#right_sep = ''
+"let g:airline#extensions#tabline#right_alt_sep = ''
 let g:airline#extensions#whitespace#mixed_indent_algo = 1
 let g:airline#extensions#whitespace#checks = [ 'indent', 'trailing', 'long' ]
 let g:airline#extensions#branch#enabled = 1
@@ -169,7 +172,7 @@ function MyTabLine()
   return s
 endfunction
 
-set tabline=%!MyTabLine()
+"set tabline=%!MyTabLine()
 runtime ftplugin/man.vim
 nnoremap K :Man <cword><CR>
 
@@ -220,10 +223,11 @@ let g:ft_man_open_mode = 'tab'
 set incsearch
 
 " ctrlp
-let g:ctrlp_prompt_mappings = {
-  \ 'AcceptSelection("e")': ['<2-LeftMouse>'],
-  \ 'AcceptSelection("t")': ['<c-t>', '<cr>'],
-  \}
+"let g:ctrlp_prompt_mappings = {
+"  \ 'AcceptSelection("e")': ['<2-LeftMouse>'],
+"  \ 'AcceptSelection("t")': ['<c-t>', '<cr>'],
+"  \}
+let g:ctrlp_working_path_mode = 0
 
 command Mann execute "Man " . expand("%:p")
 " disable mouse click
@@ -240,3 +244,11 @@ nmap ga <Plug>(EasyAlign)
 
 " Allow ${PWD}/.vimrc (useful for per-project vim setting)
 set exrc
+
+" --- buffer short keys --- "
+nnoremap <C-h> :bN<CR>
+nnoremap <C-n> :bn<CR>
+nnoremap <C-j> :ls<CR>:buffer<Space>
+
+" disable fold (for markdown) "
+set nofoldenable
