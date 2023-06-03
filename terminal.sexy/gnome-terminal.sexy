@@ -71,6 +71,9 @@ if which "$DCONF" > /dev/null 2>&1; then
         unset DCONF
         unset UUIDGEN
         exit 0
+    else
+        echo "ERROR: $BASE_KEY_NEW not found in dconf; Create a terminal profile named 'DELME' (to be deleted) and rerun the script"
+        exit -1
     fi
 else
 	echo "ERROR: $DCONF not found!!!"
