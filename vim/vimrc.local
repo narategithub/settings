@@ -228,6 +228,7 @@ set incsearch
 "  \ 'AcceptSelection("t")': ['<c-t>', '<cr>'],
 "  \}
 let g:ctrlp_working_path_mode = 0
+let g:ctrlp_follow_symlinks = 1
 
 command Mann execute "Man " . expand("%:p")
 " disable mouse click
