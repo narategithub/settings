@@ -120,6 +120,7 @@ let g:airline#extensions#branch#displayed_head_limit = 10
 
 " youcompleteme options
 let g:ycm_auto_trigger = 0
+let g:ycm_auto_hover = ''
 highlight YcmErrorSection ctermfg=White ctermbg=Red
 highlight YcmWarningSection ctermfg=Black ctermbg=Blue
 let g:ycm_global_ycm_extra_conf = '/etc/vim/ycm_extra_conf.py'
@@ -229,6 +230,8 @@ set incsearch
 "  \}
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_follow_symlinks = 1
+let g:ctrlp_regexp = 1
+nnoremap <C-I> :CtrlPTag<CR>
 
 command Mann execute "Man " . expand("%:p")
 " disable mouse click
