@@ -4,13 +4,13 @@ set rtp+=/opt/bundle/Vundle.vim
 call vundle#begin('/opt/bundle')
 call vundle#end()
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'ycm-core/YouCompleteMe'
-Plugin 'kien/ctrlp.vim'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-surround'
+"Plugin 'ycm-core/YouCompleteMe'
+"Plugin 'kien/ctrlp.vim'
+"Plugin 'tpope/vim-fugitive'
+"Plugin 'tpope/vim-surround'
 Plugin 'majutsushi/tagbar'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
+"Plugin 'vim-airline/vim-airline'
+"Plugin 'vim-airline/vim-airline-themes'
 Plugin 'scrooloose/nerdtree'
 Plugin 'junegunn/vim-easy-align'
 filetype plugin indent on
