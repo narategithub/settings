@@ -231,7 +231,8 @@ set incsearch
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_follow_symlinks = 1
 let g:ctrlp_regexp = 1
-nnoremap <C-I> :CtrlPTag<CR>
+let g:ctrlp_extensions = ['autoignore']
+nnoremap <C-P><C-I> :CtrlPTag<CR>
 
 command Mann execute "Man " . expand("%:p")
 " disable mouse click
@@ -256,3 +257,10 @@ nnoremap <C-j> :ls<CR>:buffer<Space>
 
 " disable fold (for markdown) "
 set nofoldenable
+
+" DrawIt "
+let b:di_vert    = '│'
+let b:di_horiz   = '─'
+let b:di_plus    = '┼'
+let b:di_upleft  = '╲'
+let b:di_upright = '╱'

@@ -13,4 +13,5 @@ Plugin 'majutsushi/tagbar'
 "Plugin 'vim-airline/vim-airline-themes'
 Plugin 'scrooloose/nerdtree'
 Plugin 'junegunn/vim-easy-align'
+Plugin 'vim-scripts/DrawIt'
 filetype plugin indent on
