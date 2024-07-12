@@ -29,10 +29,10 @@ def guess_project_root(filename):
     dpath = "/"
     while dlist:
         dpath += "/" + dlist[0]
+        dlist.pop(0)
         if os.path.exists(f"{dpath}/configure.ac") or \
            os.path.exists(f"{dpath}/README.md"):
             return dpath
-        dpath,junk = dpath.rsplit('/', 1)
     return None
 
 def guess_project_incdirs(proot):
