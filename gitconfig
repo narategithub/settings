@@ -14,6 +14,8 @@ ln2 = log --graph --pretty=format:'%C(auto)%H%d%n%ad (%ar)%n%s%n%C(ul white)-%an
 pick = cherry-pick
 shows = show --stat -p
 ffmerge = merge --ff-only
+pr-fetch = "! f() { set -x ; git fetch $1 refs/pull/$2/head ; }; f"
+pwd = "!pwd"
 
 [diff]
 tool = vimdiff
