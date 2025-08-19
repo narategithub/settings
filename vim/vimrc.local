@@ -39,6 +39,7 @@ set makeprg=/home/narate/scripts/build_project.sh
 command -nargs=* MK :make <args>
 " map <C-B> :MK<CR>
 
+let g:doxygen_javadoc_autobrief=0
 let g:load_doxygen_syntax=1
 " let g:clang_complete_macros=1
 " let g:clang_complete_auto=0
@@ -98,8 +99,18 @@ hi DiffDelete cterm=bold ctermfg=0 ctermbg=6
 hi DiffText cterm=bold ctermbg=1
 
 " Fold highlight for dark background
-hi Folded cterm=bold ctermfg=0 ctermbg=7
-hi FoldColumn cterm=bold ctermfg=0 ctermbg=7
+hi clear Folded
+hi Folded cterm=bold ctermbg=7
+hi clear FoldColumn
+hi FoldColumn cterm=bold ctermbg=7
+hi clear SignColumn
+hi SignColumn cterm=bold ctermbg=7
+
+hi clear Pmenu
+hi Pmenu ctermbg=13
+
+hi clear Visual
+hi Visual ctermfg=7 ctermbg=6
 
 set comments+=fb:\[\ \]
 set comments+=fb:\[*\]
@@ -232,11 +243,12 @@ let g:ctrlp_working_path_mode = 0
 let g:ctrlp_follow_symlinks = 1
 let g:ctrlp_regexp = 1
 let g:ctrlp_extensions = ['autoignore']
+let g:ctrlp_show_hidden = 1
 nnoremap <C-P><C-I> :CtrlPTag<CR>
 
 command Mann execute "Man " . expand("%:p")
 " disable mouse click
-set mouse-=a
+set mouse=
 
 set showcmd
 
@@ -259,8 +271,10 @@ nnoremap <C-j> :ls<CR>:buffer<Space>
 set nofoldenable
 
 " DrawIt "
-let b:di_vert    = '│'
-let b:di_horiz   = '─'
-let b:di_plus    = '┼'
-let b:di_upleft  = '╲'
-let b:di_upright = '╱'
+"let b:di_vert    = '│'
+"let b:di_horiz   = '─'
+"let b:di_plus    = '┼'
+"let b:di_upleft  = '╲'
+"let b:di_upright = '╱'
+
+let rst_syntax_code_list = [ 'python', 'c', 'conf', 'config', 'sh', 'bash' ]
