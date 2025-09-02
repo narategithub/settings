@@ -100,14 +100,14 @@ hi DiffText cterm=bold ctermbg=1
 
 " Fold highlight for dark background
 hi clear Folded
-hi Folded cterm=bold ctermbg=7
+hi Folded cterm=bold ctermbg=7 ctermfg=0
 hi clear FoldColumn
-hi FoldColumn cterm=bold ctermbg=7
+hi FoldColumn cterm=bold ctermbg=7 ctermfg=0
 hi clear SignColumn
-hi SignColumn cterm=bold ctermbg=7
+hi SignColumn cterm=bold ctermbg=7 ctermfg=0
 
 hi clear Pmenu
-hi Pmenu ctermbg=13
+hi Pmenu ctermbg=13 ctermfg=0
 
 hi clear Visual
 hi Visual ctermfg=7 ctermbg=6
