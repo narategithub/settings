@@ -90,7 +90,6 @@ autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 
 highlight Search cterm=NONE ctermfg=0 ctermbg=11 guibg=Yellow guifg=Black
-highlight Visual cterm=NONE ctermfg=0 ctermbg=6 guibg=Yellow guifg=Black
 
 " Easier vimdiff color for dark bg
 hi DiffAdd cterm=bold ctermbg=4
@@ -110,7 +109,7 @@ hi clear Pmenu
 hi Pmenu ctermbg=13 ctermfg=0
 
 hi clear Visual
-hi Visual ctermfg=7 ctermbg=6
+hi Visual cterm=inverse
 
 set comments+=fb:\[\ \]
 set comments+=fb:\[*\]
@@ -134,7 +133,8 @@ let g:airline#extensions#tagbar#flags = 'f'
 let g:ycm_auto_trigger = 0
 let g:ycm_auto_hover = ''
 highlight YcmErrorSection ctermfg=White ctermbg=Red
-highlight YcmWarningSection ctermfg=Black ctermbg=Blue
+hi clear YcmWarningSection
+hi YcmWarningSection ctermbg=darkgrey cterm=bold
 let g:ycm_global_ycm_extra_conf = '/etc/vim/ycm_extra_conf.py'
 
 function ModifyGdYcm()
@@ -279,3 +279,7 @@ set nofoldenable
 "let b:di_upright = '╱'
 
 let rst_syntax_code_list = [ 'python', 'c', 'conf', 'config', 'sh', 'bash' ]
+
+" presenting.vim
+"   Change markdown slide separator from '#' to 3 empty lines.
+au FileType markdown let b:presenting_slide_separator = '\n\n\n\n'
