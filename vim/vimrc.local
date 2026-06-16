@@ -1,8 +1,9 @@
 " /etc/vim/vimrc.local
 "
 
-
-source /etc/vim/vimrc.vundle
+if filereadable("/etc/vim/vimrc.vundle")
+	source /etc/vim/vimrc.vundle
+endif
 
 set encoding=utf-8
 set fileencoding=utf-8
