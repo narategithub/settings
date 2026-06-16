@@ -53,7 +53,7 @@ def guess_project_incdirs(proot):
     return tgt
 
 def c_handle(filename):
-    flags = [ '-Wall', '-x', 'c', '-DDEBUG' ]
+    flags = [ '-Wall', '-x', 'c', '-DDEBUG', '-DOVIS_FLEX' ]
     flags += [ '-I' + p for p in gcc_include_search_paths() ]
     pdir = guess_project_root(filename)
     if pdir:
