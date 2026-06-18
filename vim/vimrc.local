@@ -7,7 +7,7 @@ endif
 
 set encoding=utf-8
 set fileencoding=utf-8
-set term=ansi
+colorscheme default
 
 " explicitly source defaults.vim first. Otherwise, if there is no ~/.vimrc,
 " defaults.vim get sourced after global vimrc file.
