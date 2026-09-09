@@ -1,28 +1,46 @@
+#!/bin/bash
 myprompt() {
-	if test -z "$parent"; then
+	local _R="\033[31m"
+	local _G="\033[32m"
+	local _Y="\033[33m"
+	local _B="\033[34m"
+	local _BO="\033[1m"
+	local _RE="\033[0m"
+	if test -z "$myprompt_parent"; then
 		if ((PPID)); then
-			parent=`ps -o cmd --no-headers $PPID | awk '{ print $1 }'`
+			myprompt_parent=`ps -o cmd --no-headers $PPID | awk '{ print $1 }'`
 		else
-			parent="--"
+			myprompt_parent="--"
 		fi
+		myprompt_parent="${_BO}${_R}[$myprompt_parent]"
 	fi
-	if test -z "$left"; then
+	if test -z "$myprompt_udir"; then
+		local _dbchroot='${debian_chroot:+($debian_chroot)}'
 		if (( $UID )); then
 			# This is regular user
-			left='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u\[\033[01;33m\]@\h\[\033[01;34m\] \w'
+			myprompt_udir="${_BO}${_G}\\u${_Y}@\\h${_B} \\w${_RE}"
 		else
 			# This is root
-			left='${debian_chroot:+($debian_chroot)}\[\033[01;31m\]\u\[\033[01;33m\]@\h\[\033[01;34m\] \w'
+			myprompt_udir="${_BO}${_R}\\u${_Y}@\\h${_B} \\w${_RE}"
 		fi
+		myprompt_udir="${_dbchroot}${myprompt_udir}"
 	fi
 
-	_branch="$(git symbolic-ref HEAD --short 2>/dev/null || echo '--')"
-	_git_sym_ref="\\033[0;32m(git-branch: $_branch)"
+	local _branch="$(git symbolic-ref HEAD --short 2>/dev/null || echo '--')"
+	if [[ ${_branch} != "--" ]]; then
+		_dirty=$(git status -s -uno 2>/dev/null)
+		if [[ -n "${_dirty}" ]]; then
+			_dirty=" ${_R}(*)"
+		else
+			_dirty=""
+		fi
+		local _rev=$( git rev-parse --short HEAD )
+		local _branch="${_branch} ${_Y}${_rev}${_dirty}"
+	fi
+	local _git_sym_ref="${_RE}${_G}(git-branch: $_branch${_G})"
 
-	right="\\[\\033[01;31m\\][$parent]"
 	[[ "$TERM" = "linux" ]] || echo -ne "\033]0;${USER}@${HOSTNAME}:$PWD\007"
-	#PS1=$(printf "\n%*s\r%s\n%*s\n\\[\\033[01;34m\\]\$\\[\\033[00m\\] " "$((COLUMNS + 15))" "$right" "$left" "$((COLUMNS + 10))" "$_git_sym_ref")
-	PS1=$(printf "\n%s %s\n%s\n\\[\\033[01;34m\\]\$\\[\\033[00m\\] " "$right" "$_git_sym_ref" "$left" )
+	PS1=$(printf "\n%s %s\n%s\n${_BO}${_B}\$${_RE} " "$myprompt_parent" "$_git_sym_ref" "$myprompt_udir" )
 }
 
 export -f myprompt
