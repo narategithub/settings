@@ -34,7 +34,7 @@ myprompt() {
 		else
 			_dirty=""
 		fi
-		local _rev=$( git rev-parse --short HEAD )
+		local _rev=$( git rev-parse --short HEAD 2>/dev/null )
 		local _branch="${_branch} ${_Y}${_rev}${_dirty}"
 	fi
 	local _git_sym_ref="${_RE}${_G}(git-branch: $_branch${_G})"
