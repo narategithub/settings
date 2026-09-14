@@ -40,7 +40,9 @@ myprompt() {
 	local _git_sym_ref="${_RE}${_G}(git-branch: $_branch${_G})"
 
 	[[ "$TERM" = "linux" ]] || echo -ne "\033]0;${USER}@${HOSTNAME}:$PWD\007"
-	PS1=$(printf "\n%s %s\n%s\n${_BO}${_B}\$${_RE} " "$myprompt_parent" "$_git_sym_ref" "$myprompt_udir" )
+	# The last line should have \\[ \\] surrounding non-printables so that
+	# readline does not count those characters.
+	PS1=$(printf "\n%s %s\n%s${_RE}\n\\[${_BO}${_B}\\]\$\\[${_RE}\\] " "$myprompt_parent" "$_git_sym_ref" "$myprompt_udir" )
 }
 
 export -f myprompt
